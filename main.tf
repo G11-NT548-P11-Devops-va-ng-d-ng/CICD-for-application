@@ -3,6 +3,12 @@ module "google_provider" {
   project     = var.project
   region      = "us-central1"
 }
+terraform {
+  backend "gcs" {
+    bucket      = "nt548_bucket_state"           # Tên bucket
+    prefix      = "terraform/state"              # Đường dẫn lưu trữ trạng thái
+  }
+}
 module "vpc" {
   source       = "./modules/vpc"
   project     = var.project
@@ -21,8 +27,8 @@ module "instance" {
   image                = "ubuntu-2004-focal-v20201014"
   network              = module.vpc.vpc_id
   subnetwork           = module.subnet.subnet_id
-  be_tags = ["backend", "v6"]
-  fe_tags = ["frontend", "v6"]
+  be_tags = ["v4"]
+  fe_tags = ["v4", "v6"]
 }
 
 module "firewall" {
@@ -30,4 +36,5 @@ module "firewall" {
   project                  = var.project
   network                  = module.vpc.vpc_id
   ipv6_target_tags         = ["v6"]
+  ipv4_target_tags         = ["v4"]
 }

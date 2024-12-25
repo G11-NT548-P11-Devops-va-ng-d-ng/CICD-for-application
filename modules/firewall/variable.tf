@@ -8,7 +8,12 @@ variable "project" {
   type        = string
 }
 variable "ipv6_target_tags" {
-  description = "Target tags for SSH firewall rule"
+  description = "Target tags for port 443, 80, 22 firewall rule"
   type        = list(string)
   default     = ["v6"]
+}
+variable "ipv4_target_tags" {
+  description = "Target tags for port 443, 80, 22 firewall rule"
+  type        = list(string)
+  default     = ["v4"]
 }
