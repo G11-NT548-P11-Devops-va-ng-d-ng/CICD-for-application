@@ -1,22 +1,20 @@
-#It will use node:19-alpine3.16 as the parent image for building the Docker image
+# Base image
 FROM node:20-alpine3.19
 
-#It will create a working directory for Docker. The Docker image will be created in this working directory.
-WORKDIR /react-app
+# Set working directory to the webphim folder
+WORKDIR /webphim
 
-#Copy the React.js application dependencies from the package.json to the react-app working directory.
-COPY package.json .
+# Copy the package.json and package-lock.json for dependency installation
+COPY webphim/package.json webphim/package-lock.json ./
 
-COPY package-lock.json .
+# Install dependencies
+RUN npm install
 
-#install all the React.js application dependencies
-RUN npm i
+# Copy all other files and folders from webphim
+COPY webphim/ .
 
-#Copy the remaining React.js application folders and files from the `jenkins-kubernetes-deployment` local folder to the Docker react-app working directory 
-COPY . .
-
-#Expose the React.js application container on port 3000
+# Expose the application port (adjust if your app uses a different port)
 EXPOSE 4000
 
-#The command to start the React.js application container
+# Command to start the application
 CMD ["npm", "start"]
