@@ -26,7 +26,7 @@ jobs:
 
     # Setup gcloud CLI
     - id: 'auth'
-      uses: 'google-github-actions/auth@v0'
+      uses: 'google-github-actions/auth@2.1.7'
       with:
         credentials_json: '${{ secrets.GKE_SA_KEY }}'
 
