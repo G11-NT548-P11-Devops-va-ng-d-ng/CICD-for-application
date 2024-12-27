@@ -8,13 +8,13 @@ WORKDIR /webphim
 COPY webphim/package.json webphim/package-lock.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
 # Copy the rest of the files
 COPY webphim/ . 
 
 # Build the application
-RUN npm run start
+RUN npm start
 
 # Expose the application port (adjust if your app uses a different port)
 EXPOSE 3009
