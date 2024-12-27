@@ -8,13 +8,13 @@ WORKDIR /webphim
 COPY webphim/package.json webphim/package-lock.json ./
 
 # Install dependencies
-RUN npm install --legacy-peer-deps
+RUN npm ci
 
 # Copy the rest of the files
 COPY webphim/ . 
 
 # Build the application
-RUN npm run build
+RUN npm run start
 
 # Expose the application port (adjust if your app uses a different port)
 EXPOSE 3009
