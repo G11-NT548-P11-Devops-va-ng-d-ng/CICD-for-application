@@ -24,6 +24,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Install dependencies & build
+      run: |
+          npm ci
+          npm run convert:build
+      working-directory: ./webphim 
     # Setup gcloud CLI
     - id: 'auth'
       uses: 'google-github-actions/auth@v2.1.7'
