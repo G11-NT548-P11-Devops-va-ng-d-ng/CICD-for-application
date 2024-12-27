@@ -46,6 +46,7 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |-
+        export NODE_OPTIONS=--max-old-space-size=8192
         docker build \
           --tag "$GAR_ZONE-docker.pkg.dev/$PROJECT_ID/$GAR_REPO/$IMAGE:$IMAGE_TAG" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
