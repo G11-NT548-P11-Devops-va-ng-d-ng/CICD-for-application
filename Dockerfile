@@ -14,7 +14,7 @@ RUN npm install
 COPY react-basic/ .
 
 # Expose the application port (adjust if your app uses a different port)
-EXPOSE 4000
+EXPOSE 3000
 
 # Command to start the application
 CMD ["npm", "start"]
