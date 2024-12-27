@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: react-app #The name of the react.js application container
-        image: killua214/helloreppo:latest #The Docker image for building the React.js application container
+        image: asia.gcr.io/gke-demo-445811/micro:test #The Docker image for building the React.js application container
         ports:
         - containerPort: 3009 #The port for the React.js application container
