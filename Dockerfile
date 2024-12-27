@@ -8,7 +8,7 @@ WORKDIR /webphim
 COPY webphim/package.json webphim/package-lock.json ./
 
 # Install dependencies
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 # Copy the rest of the files
 COPY webphim/ . 
