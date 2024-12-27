@@ -1,5 +1,5 @@
 # Base image
-FROM node:20-alpine3.19
+FROM node:20-alpine3.19 AS build
 
 # Set working directory to the webphim folder
 WORKDIR /webphim
@@ -18,7 +18,7 @@ RUN npm run build
 FROM nginx:1.27.3-alpine
 
 # Copy the built app to Nginx's default web root
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /webphim/build /usr/share/nginx/html
 
 # Expose Nginx's HTTP port
 EXPOSE 80
