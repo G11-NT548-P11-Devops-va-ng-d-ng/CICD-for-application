@@ -8,7 +8,7 @@ WORKDIR /webphim
 COPY webphim/package.json webphim/package-lock.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci
 
 # Copy the rest of the files
 COPY webphim/ . 
