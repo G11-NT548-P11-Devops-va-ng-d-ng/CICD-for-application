@@ -15,7 +15,7 @@ COPY . .
 RUN npm run build
 
 # Production image with Nginx
-FROM nginx:alpine
+FROM nginx:1.27.3-alpine
 
 # Copy the built app to Nginx's default web root
 COPY --from=build /app/build /usr/share/nginx/html
