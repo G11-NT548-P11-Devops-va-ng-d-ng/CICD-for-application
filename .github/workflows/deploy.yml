@@ -52,10 +52,16 @@ jobs:
           --build-arg GITHUB_REF="$GITHUB_REF" \
           .
     # Scan Docker image with Trivy
-    - name: Scan Docker image with Trivy
+    - name: Trivy
       run: |-
         curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
-        ./bin/trivy image --severity CRITICAL,HIGH "$GAR_ZONE-docker.pkg.dev/$PROJECT_ID/$GAR_REPO/$IMAGE:$IMAGE_TAG"
+        ./bin/trivy image --severity CRITICAL,HIGH --format json --output trivy-report.json $GAR_ZONE-docker.pkg.dev/$PROJECT_ID/$GAR_REPO/$IMAGE:$IMAGE_TAG
+    #Upload Trivy Scan Report
+    - name: Trivy Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: trivy-scan-report
+        path: trivy-report.json
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |-
