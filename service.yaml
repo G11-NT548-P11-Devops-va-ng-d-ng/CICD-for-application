@@ -10,4 +10,4 @@ spec:
   - protocol: TCP
     port: 4000 #Service port
     targetPort: 4000  #The port for the React.js application container
-    nodePort: 30007
+    nodePort: 30008
