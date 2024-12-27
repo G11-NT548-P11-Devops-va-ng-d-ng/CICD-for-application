@@ -6,18 +6,23 @@ WORKDIR /webphim
 
 # Copy dependency files
 COPY webphim/package.json webphim/package-lock.json ./
-
 # Install dependencies
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Copy the rest of the files
-COPY webphim/ . 
+# Copy source files and build the app
+COPY . .
+RUN npm run build
 
-# Build the application
-RUN npm start
+# Production image with Nginx
+FROM nginx:alpine
 
-# Expose the application port (adjust if your app uses a different port)
-EXPOSE 3009
+# Copy the built app to Nginx's default web root
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Command to start the application
-CMD ["npm", "start"]
+# Expose Nginx's HTTP port
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
+
