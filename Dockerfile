@@ -1,7 +1,7 @@
 # Base image
 FROM node:20-alpine3.19
 
-# Set working directory to the webphim folder
+# Set working directory
 WORKDIR /webphim
 
 # Copy dependency files
@@ -10,13 +10,10 @@ COPY webphim/package.json webphim/package-lock.json ./
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the files
-COPY webphim/ . 
+# Copy application files
+COPY webphim/ .
 
-# Build the application
-RUN npm start
-
-# Expose the application port (adjust if your app uses a different port)
+# Expose the application port (adjust as needed)
 EXPOSE 3009
 
 # Command to start the application
