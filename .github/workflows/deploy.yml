@@ -13,6 +13,8 @@ env:
   IMAGE_TAG: latest # image tag
   GAR_ZONE: asia # artifact registry zone
   GAR_REPO: asia.gcr.io # artifact registry repository
+  PROMETHEUS_NAMESPACE: monitoring
+  GRAFANA_NAMESPACE: monitoring
 
 jobs:
   setup-build-publish-deploy:
