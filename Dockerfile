@@ -11,7 +11,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 # Copy source files and build the app
-COPY . .
+COPY webphim/ ./
 RUN pwd
 RUN npm start
 
