@@ -9,6 +9,7 @@ COPY webphim/package.json webphim/package-lock.json ./
 # Install dependencies
 COPY package.json package-lock.json ./
 RUN npm ci
+RUN npm install react-app-rewired
 
 # Copy source files and build the app
 COPY webphim/ ./

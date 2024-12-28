@@ -45,7 +45,7 @@
         "sass": "^1.76.0"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "react-app-rewired start",
         "build": "npm --prefix webphim run build && echo Build Complete",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject"
