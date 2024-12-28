@@ -2,15 +2,15 @@
 FROM node:18-alpine3.20
 
 # Set working directory to the webphim folder
-WORKDIR webphim/
+WORKDIR react-basic/
 
 # Copy dependency files
 COPY package.json package-lock.json ./
 RUN npm ci
-RUN npm install react-app-rewired
-RUN npm install customize-cra@0.1.1
+#RUN npm install react-app-rewired
+#RUN npm install customize-cra@0.1.1
 # Copy source files and build the app
-COPY webphim/ ./
+COPY react-basic/ ./
 RUN ls -la
 RUN pwd
 RUN npm start
