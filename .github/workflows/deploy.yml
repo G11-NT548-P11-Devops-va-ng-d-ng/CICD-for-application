@@ -29,20 +29,6 @@ jobs:
 
     # Setup gcloud CLI
 
-    - name: Set up Kubernetes Namespace
-      run: |
-        kubectl get namespace monitoring || kubectl create namespace monitoring
-
-    # Install Helm
-    - name: Install Helm
-      run: |-
-        curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-
-    - name: Add Grafana Helm Repository
-      run: |
-        helm repo add grafana https://grafana.github.io/helm-charts
-        helm repo update
-
     - id: 'auth'
       uses: 'google-github-actions/auth@v2.1.7'
       with:
@@ -61,7 +47,20 @@ jobs:
         cluster_name: ${{ env.GKE_CLUSTER }}
         location: ${{ env.GKE_ZONE }}
         
-    
+    - name: Set up Kubernetes Namespace
+      run: |
+        kubectl get namespace monitoring || kubectl create namespace monitoring
+
+    # Install Helm
+    - name: Install Helm
+      run: |-
+        curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+    - name: Add Grafana Helm Repository
+      run: |
+        helm repo add grafana https://grafana.github.io/helm-charts
+        helm repo update
+
 
     # Deploy Grafana
     - name: Deploy Grafana
