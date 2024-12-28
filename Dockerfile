@@ -9,6 +9,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 #RUN npm install react-app-rewired
 #RUN npm install customize-cra@0.1.1
+RUN npm install react-scripts
 # Copy source files and build the app
 COPY react-basic/ ./
 RUN ls -la
