@@ -10,7 +10,7 @@ COPY webphim/package.json webphim/package-lock.json ./
 COPY package.json package-lock.json ./
 RUN npm ci
 RUN npm install react-app-rewired
-
+RUN npm i customize-cra@0.1.1
 # Copy source files and build the app
 COPY webphim/ ./
 RUN ls -la
