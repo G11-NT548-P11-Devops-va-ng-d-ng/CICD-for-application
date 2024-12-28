@@ -1,5 +1,5 @@
 # Base image
-FROM node:18-alpine3.20
+FROM node:20-alpine3.20
 
 # Set working directory to the webphim folder
 WORKDIR /app
