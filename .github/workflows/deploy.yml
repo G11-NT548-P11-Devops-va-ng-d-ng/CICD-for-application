@@ -45,6 +45,7 @@ jobs:
 
     # Build the Docker image
     - name: Build
+      working-directory: webphim
       run: |-
         export NODE_OPTIONS=--max-old-space-size=8192
         docker build \
