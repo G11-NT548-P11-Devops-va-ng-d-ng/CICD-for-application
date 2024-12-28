@@ -12,6 +12,7 @@ RUN npm ci
 
 # Copy source files and build the app
 COPY webphim/ ./
+RUN ls -la
 RUN pwd
 RUN npm start
 
