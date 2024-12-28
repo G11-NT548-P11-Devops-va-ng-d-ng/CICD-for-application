@@ -5,8 +5,6 @@ FROM node:18-alpine3.20
 WORKDIR webphim/
 
 # Copy dependency files
-COPY webphim/package.json webphim/package-lock.json ./
-# Install dependencies
 COPY package.json package-lock.json ./
 RUN npm ci
 RUN npm install react-app-rewired
