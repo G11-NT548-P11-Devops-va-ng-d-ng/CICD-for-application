@@ -46,7 +46,7 @@ jobs:
         cluster_name: ${{ env.GKE_CLUSTER }}
         location: ${{ env.GKE_ZONE }}
         
-    # Install Helm Charts
+    # Install Helm
     - name: Install Helm
       run: |-
         curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
@@ -108,7 +108,7 @@ jobs:
     - name: Configure Grafana Dashboard
       run: |-
         echo "Applying Grafana dashboard..."
-        kubectl apply -f Helm/grafana-dashboard.yaml
+        kubectl apply -f Helm/grafana-dashboard.yaml -n monitoring
 
     # Configure Nginx for Grafana
     - name: Configure Nginx for Grafana
