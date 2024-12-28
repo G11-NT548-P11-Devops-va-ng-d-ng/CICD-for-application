@@ -51,14 +51,6 @@ jobs:
       run: |-
         curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
       
-    # Deploy Prometheus
-    - name: Deploy Prometheus
-      run: |-
-        helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-        helm repo update
-        helm upgrade --install prometheus prometheus-community/prometheus \
-          --namespace ${{ env.PROMETHEUS_NAMESPACE }} \
-          --create-namespace
 
     # Deploy Grafana
     - name: Deploy Grafana
@@ -70,6 +62,17 @@ jobs:
           --set adminPassword=${{ secrets.GRAFANA_ADMIN_PASSWORD }} \
           --set service.type=LoadBalancer \
           --create-namespace
+
+          
+    # Deploy Prometheus
+    - name: Deploy Prometheus
+      run: |-
+        helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+        helm repo update
+        helm upgrade --install prometheus prometheus-community/prometheus \
+          --namespace ${{ env.PROMETHEUS_NAMESPACE }} \
+          --create-namespace
+
 
     # Build the Docker image
     - name: Build
