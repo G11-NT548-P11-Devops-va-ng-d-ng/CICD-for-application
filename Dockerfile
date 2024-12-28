@@ -2,7 +2,7 @@
 FROM node:20-alpine3.19 AS build
 
 # Set working directory to the webphim folder
-WORKDIR ./webphim
+WORKDIR webphim/
 
 # Copy dependency files
 COPY webphim/package.json webphim/package-lock.json ./
