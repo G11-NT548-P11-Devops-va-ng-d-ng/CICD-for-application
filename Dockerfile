@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy dependency files
 COPY react-basic/package*.json ./
-RUN npm ci --prefix react-basic
+RUN npm ci
 COPY react-basic .
 
 EXPOSE 3009
